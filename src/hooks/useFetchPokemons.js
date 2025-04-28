@@ -7,10 +7,11 @@ export default function useFetchPokemons() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=150');
+        const res = await axios.get(import.meta.env.VITE_API_URI);
         const results = res.data.results;
 
         const detailedPromises = results.map(pokemon => axios.get(pokemon.url));
