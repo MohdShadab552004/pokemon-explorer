@@ -11,15 +11,9 @@ export default function useFetchPokemons() {
   useEffect(() => {
     async function fetchData() {
       try {
-        console.log("fetching data...");
-        
         const res = await axios.get(import.meta.env.VITE_API_URI);
-        console.log("fetch succesfull");
-        
         const results = res.data.results;
-        console.log("results", results);
         
-
         const detailedPromises = results.map(pokemon => axios.get(pokemon.url));
         const detailedResults = await Promise.all(detailedPromises);
 
