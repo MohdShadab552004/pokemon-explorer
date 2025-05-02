@@ -1,17 +1,19 @@
-export default function TypeFilter({ types, selectedType, setSelectedType }) {
-    return (
-      <select
-        value={selectedType}
-        onChange={(e) => setSelectedType(e.target.value)}
-        className="w-[200px] h-[50px] pl-2 rounded-full border-2 border-yellow-400 bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
-      >
-        <option value="">All Types</option>
-        {types.map(type => (
-          <option key={type} value={type}>
-            {type.charAt(0).toUpperCase() + type.slice(1)}
-          </option>
-        ))}
-      </select>
-    );
-  }
-  
+import React,{useContext} from 'react';
+import PokemonContext from '../context/PokemonContext';
+
+export default function SortOptions() {
+  const {sortOption, setSortOption} = useContext(PokemonContext); 
+  return (
+    <select
+      value={sortOption}
+      onChange={(e) => setSortOption(e.target.value)}
+      className="w-[200px] h-[50px] bg-white rounded-xl shadow-md border border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    >
+      <option value="">Sort By</option>
+      <option value="id">By ID</option>
+      <option value="name">By Name</option>
+      <option value="a-z">Alphabetical (A-Z)</option>
+      <option value="z-a">Alphabetical (Z-A)</option>
+    </select>
+  );
+}

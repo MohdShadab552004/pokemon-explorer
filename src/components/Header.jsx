@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import TypeFilter from "./TypeFilter";
-
-export default function Header({ searchTerm, setSearchTerm, types, selectedType, setSelectedType }) {
+import { Link } from "react-router-dom";
+export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    console.log('CHALA');
     setIsSidebarOpen(!isSidebarOpen);
   };
 
@@ -33,8 +32,10 @@ export default function Header({ searchTerm, setSearchTerm, types, selectedType,
           ✖
         </button>
         <div className="flex flex-col gap-4 px-4 py-4">
-          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          <TypeFilter types={types} selectedType={selectedType} setSelectedType={setSelectedType} />
+          <SearchBar  />
+          <TypeFilter />
+          <Link to="/favorites" className="w-full h-[50px] flex justify-start pl-2 items-center bg-white rounded-xl shadow-md border border-yellow-300">Favorites</Link>
+
         </div>
       </div>
 
@@ -42,9 +43,10 @@ export default function Header({ searchTerm, setSearchTerm, types, selectedType,
       <div
         className="container flex gap-5 h-full w-auto items-center justify-end"
       >
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <TypeFilter types={types} selectedType={selectedType} setSelectedType={setSelectedType} />
-      </div>
+        <Link to="/favorites" className="w-[100px] h-[50px] flex justify-center items-center bg-white rounded-xl shadow-md border border-yellow-300">Favorites</Link>
+        <SearchBar  />
+        <TypeFilter />
+      </div>  
     </header>
   );
 }

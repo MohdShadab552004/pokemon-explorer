@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @media (max-width : 1024px) {
   .container {
     display: none;
